@@ -1,67 +1,65 @@
-# calculator# 
+# calculator
+# ✍️ Author: [Kamani Jatin]
+# 📄 Description: A user-friendly command-line calculator with emoji interface
 
-A simple and fun command-line calculator built with Python, featuring emoji-enhanced interaction to make basic arithmetic operations more engaging.
+# ➕ Addition
+def add(a, b):
+    return a + b
 
-## ✨ Features
+# ➖ Subtraction
+def subtract(a, b):
+    return a - b
 
-- ➕ Addition  
-- ➖ Subtraction  
-- ✖️ Multiplication  
-- ➗ Division (with zero division error handling)  
-- 🚪 Option to Exit  
-- 🧠 User-friendly and emoji-based CLI prompts
+# ✖️ Multiplication
+def multiply(a, b):
+    return a * b
 
-## 📁 Project Structure
+# ➗ Division with error handling
+def divide(a, b):
+    try:
+        return a / b
+    except ZeroDivisionError:
+        return "🚫 Error: Cannot divide by zero!"
 
-```
-calculator.py   # Main Python script with calculator logic
-README.md       # Project description and usage instructions
-```
+# 🧠 Perform operation based on choice
+def perform_operation(choice, num1, num2):
+    if choice == '1':
+        return f"✅ Result: {add(num1, num2)}"
+    elif choice == '2':
+        return f"✅ Result: {subtract(num1, num2)}"
+    elif choice == '3':
+        return f"✅ Result: {multiply(num1, num2)}"
+    elif choice == '4':
+        return f"✅ Result: {divide(num1, num2)}"
+    else:
+        return "⚠️ Invalid operation."
 
-## ▶️ How to Run
+# 🔁 Main calculator loop
+def calculator():
+    print("🎉 Welcome to the Python CLI Calculator! 🧮")
+    while True:
+        print("\nChoose an operation:")
+        print("1  Add ➕")
+        print("2  Subtract ➖")
+        print("3  Multiply ✖")
+        print("4  Divide ➗")
+        print("5  Exit  🚪")
 
-### 📌 Requirements
-- Python 3.x installed on your system
+        choice = input("👉 Enter your choice (1/2/3/4/5): ")
 
-### 💻 Run Instructions
+        if choice == '5':
+            print("👋 Thanks for using the calculator. Goodbye! 🌟")
+            break
 
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/your-username/emoji-cli-calculator.git
-   cd emoji-cli-calculator
-   ```
+        try:
+            num1 = float(input("🔢 Enter the first number: "))
+            num2 = float(input("🔢 Enter the second number: "))
+        except ValueError:
+            print("❌ Invalid input. Please enter numbers only.")
+            continue
 
-2. **Run the script:**
-   ```bash
-   python calculator.py
-   ```
+        print(perform_operation(choice, num1, num2))
 
-3. **Follow the CLI prompts:**
-   - Choose the operation (1-5)
-   - Enter two numbers
-   - Get the result or exit
-
-### 🧪 Example
-
-```bash
-🎉 Welcome to the Python CLI Calculator! 🧮
-
-Choose an operation:
-1  Add ➕
-2  Subtract ➖
-3  Multiply ✖
-4  Divide ➗
-5  Exit  🚪
-👉 Enter your choice (1/2/3/4/5): 1
-🔢 Enter the first number: 5
-🔢 Enter the second number: 3
-✅ Result: 8.0
-```
-
-## 👨‍💻 Author
-
-[Your Name] – [your GitHub link]
-
-## 📝 License
-
-This project is licensed under the MIT License. See the `LICENSE` file for details.
+# ▶️ Run the calculator
+if __name__ == "__main__":
+    calculator()
